@@ -20,8 +20,11 @@ const onSearch = async e => {
   e.preventDefault();
 
   galleryEl.innerHTML = '';
+  btnLoadMoreEl.style.display = 'none';
 
   query = e.target.elements.searchQuery.value.trim();
+
+  pixabayApi.resetPageNumber();
 
   if (!query) {
     return;
