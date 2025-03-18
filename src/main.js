@@ -48,6 +48,9 @@ refs.form.addEventListener('submit', e => {
       e.target.elements['search-text'].value = '';
     })
     .catch(err => {
-      iziToast.error({});
+      iziToast.error({
+        message: err.message,
+        position: 'topRight',
+      });
     });
 });
