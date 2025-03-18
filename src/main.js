@@ -46,6 +46,5 @@ refs.form.addEventListener('submit', async e => {
     refs.loader.classList.remove('is-visible');
     refs.gallerylist.innerHTML = renderMarkUp(images);
     simpleLightbox.refresh();
-    4;
   } catch (error) {}
 });
