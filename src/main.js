@@ -10,7 +10,7 @@ const refs = {
   loader: document.querySelector('.loader'),
 };
 
-refs.form.addEventListener('submit', async e => {
+refs.form.addEventListener('submit', e => {
   e.preventDefault();
   refs.gallerylist.innerHTML = '';
   refs.loader.classList.add('is-visible');
@@ -27,24 +27,24 @@ refs.form.addEventListener('submit', async e => {
     return;
   }
 
-  try {
-    const {
-      data: { hits: images },
-    } = await fetchImages(query);
+  fetchImages(query)
+    .then(({ data: { hits: images } }) => {
+      if (!images.length) {
+        iziToast.error({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+        });
 
-    if (!images.length) {
-      iziToast.error({
-        message:
-          'Sorry, there are no images matching your search query. Please try again!',
-        position: 'topRight',
-      });
+        refs.loader.classList.remove('is-visible');
+        return;
+      }
 
       refs.loader.classList.remove('is-visible');
-      return;
-    }
-
-    refs.loader.classList.remove('is-visible');
-    refs.gallerylist.innerHTML = renderMarkUp(images);
-    simpleLightbox.refresh();
-  } catch (error) {}
+      refs.gallerylist.innerHTML = renderMarkUp(images);
+      simpleLightbox.refresh();
+    })
+    .catch(err => {
+      iziToast.error({});
+    });
 });
