@@ -2,7 +2,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 import { fetchImages } from './js/pixabey-api';
-import { renderMarkUp, simpleLightbox } from './js/render-funcitons';
+import { renderMarkUp, simpleLightbox } from './js/render-functions';
 
 const refs = {
   form: document.querySelector('.form'),
