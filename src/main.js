@@ -1,7 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-import { fetchImages } from './js/pixabey-api';
+import { fetchImages } from './js/pixabay-api';
 import { renderMarkUp, simpleLightbox } from './js/render-functions';
 
 const refs = {
