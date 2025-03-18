@@ -24,6 +24,7 @@ refs.form.addEventListener('submit', e => {
     });
 
     refs.loader.classList.remove('is-visible');
+    e.target.elements['search-text'].value = '';
     return;
   }
 
@@ -37,12 +38,14 @@ refs.form.addEventListener('submit', e => {
         });
 
         refs.loader.classList.remove('is-visible');
+        e.target.elements['search-text'].value = '';
         return;
       }
 
       refs.loader.classList.remove('is-visible');
       refs.gallerylist.innerHTML = renderMarkUp(images);
       simpleLightbox.refresh();
+      e.target.elements['search-text'].value = '';
     })
     .catch(err => {
       iziToast.error({});
