@@ -22,6 +22,8 @@ refs.form.addEventListener('submit', async e => {
       message: 'Please fill out the request!',
       position: 'topRight',
     });
+
+    refs.loader.classList.remove('is-visible');
     return;
   }
 
@@ -38,7 +40,6 @@ refs.form.addEventListener('submit', async e => {
       });
 
       refs.loader.classList.remove('is-visible');
-
       return;
     }
 
